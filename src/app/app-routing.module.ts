@@ -3,11 +3,14 @@ import { LoginComponent } from './conponents/user/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './conponents/home/home.component';
+
 
 
 const routes: Routes = [
-  { path: '',  component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch:'full'},
+  { path: 'home',
+    loadChildren: () => import('./conponents/home/home.module').then(m => m.HomeModule)
+  },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent}
 ];
@@ -20,4 +23,4 @@ const routes: Routes = [
     CommonModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

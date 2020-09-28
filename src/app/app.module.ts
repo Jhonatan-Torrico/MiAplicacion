@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,10 +12,15 @@ import { HeroComponent } from './conponents/hero/hero.component';
 import { LoginComponent } from './conponents/user/login/login.component';
 import { RegisterComponent } from './conponents/user/register/register.component';
 import { ProfileComponent } from './conponents/user/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireModule} from '@angular/fire';
 
 //SERVICIOS
 import { DataApiService } from './services/data-api.service';
 import { NotaComponent } from './conponents/nota/nota.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +35,10 @@ import { NotaComponent } from './conponents/nota/nota.component';
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [DataApiService],
   bootstrap: [AppComponent]
